@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
 }
@@ -14,8 +18,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* translucent black */
-  backdrop-filter: blur(4px); /* background blur */
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   z-index: 1000;
 }
 
@@ -115,7 +119,7 @@ nav button {
   height: 100%;
 
   font-size: 1.25rem;
-  cursor: pointer;
+
   transition: 0.3s;
 }
 
@@ -217,6 +221,24 @@ main {
   gap: 1.5rem;
 }
 
+#pager {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#pager button {
+  font-size: 1rem;
+  border: none;
+  background: none;
+}
+
+#pager button:hover {
+  color: red;
+  transition: 0.3s;
+}
+
 .card-container {
 }
 
@@ -231,6 +253,7 @@ main {
 .card:hover {
   transform: scale(1.05);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .card-summary {
@@ -441,7 +464,6 @@ main {
 
 .modal-save-input-btn:hover {
   color: red;
-  cursor: grab;
 }
 
 /* Favorites Styling */
@@ -457,18 +479,93 @@ main {
 
 .modal-favorites-card h2 {
   margin-bottom: 0.5rem;
+  font-family: "arial";
 }
 
 .modal-favorites-content {
   width: 100%;
-  height: 100%;
+  height: 85%;
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 
   padding: 1rem;
-
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+#modal-favorites-refresh-btn {
+  font-size: 1.25rem;
+  float: right;
+  margin: 0.25rem;
+  border: none;
+  background: none;
+}
+
+#modal-favorites-refresh-btn:hover {
+  color: red;
+  transition: 0.3s;
+}
+/* delete pokemon*/
+.delete-pokemon-content {
+  width: 15rem;
+  height: 20rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr 1fr;
+  gap: 0.5rem;
+}
+
+#delete-warning-symbol {
+  width: 100%;
+  height: auto;
+  grid-column: span 2;
+}
+
+#delete-warning-symbol img {
+  width: 100px;
+  height: 100px;
+}
+
+.delete-pokemon-content > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.delete-pokemon-content h2 {
+  text-align: center;
+  grid-column: span 2;
+  font-size: 2rem;
+}
+
+.delete-pokemon-content button {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid rgb(90, 90, 90);
+  background-color: rgb(169, 169, 169);
+  border-radius: 3px;
+  color: white;
+}
+
+#confirm-delete-btn {
+  background-color: rgb(244, 90, 90);
+  font-weight: bold;
+}
+
+#confirm-delete-btn:hover {
+  background-color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+.delete-pokemon-msg {
+  grid-column: span 2;
+  font-size: 1.25rem;
+}
+#delete-name {
 }

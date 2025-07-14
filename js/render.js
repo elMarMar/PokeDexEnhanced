@@ -1,12 +1,16 @@
-import { formatId } from "./util.js";
+import { formatId, refreshView } from "./util.js";
+import { state } from "./state.js";
 
+const grid = document.getElementById("pokemon-grid");
 export function renderPokemonCards(pokemonData) {
-  const container = document.getElementById("pokemon-grid");
   const template = document.getElementById("pokemon-card-template");
 
-  container.innerHTML = "";
+  grid.innerHTML = "";
 
-  pokemonData.forEach((pokemon) => {
+  const start = (state.currentPage - 1) * state.pageSize;
+  const page = pokemonData.slice(start, start + state.pageSize);
+
+  page.forEach((pokemon) => {
     const card = template.content.cloneNode(true);
     card.querySelector(".card").dataset.id = pokemon.id;
     card.querySelector(".pokemon-pixel-sprite").src =
@@ -20,6 +24,36 @@ export function renderPokemonCards(pokemonData) {
     card.querySelector(".pokemon-type1").textContent = pokemon.type1;
     card.querySelector(".pokemon-type2").textContent = pokemon.type2 ?? "N/A";
 
-    container.appendChild(card);
+    grid.appendChild(card);
   });
+
+  renderPager();
+}
+
+function renderPager() {
+  let wrapper = document.getElementById("pager");
+  wrapper.innerHTML = "";
+
+  const pages = Math.ceil(state.view.length / state.pageSize);
+
+  if (state.currentPage > 1)
+    wrapper.appendChild(makeBtn("« Prev", state.currentPage - 1));
+
+  for (let p = 1; p <= pages; p++) {
+    wrapper.appendChild(makeBtn(p, p));
+  }
+
+  if (state.currentPage < pages)
+    wrapper.appendChild(makeBtn("Next »", state.currentPage + 1));
+}
+
+function makeBtn(txt, page) {
+  const b = document.createElement("button");
+  b.textContent = txt;
+  b.disabled = page === state.currentPage;
+  b.addEventListener("click", () => {
+    state.currentPage = page;
+    refreshView();
+  });
+  return b;
 }

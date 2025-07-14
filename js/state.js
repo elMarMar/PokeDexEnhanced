@@ -7,6 +7,8 @@ export const state = {
     search: "",
   },
   sortkey: "id",
+  pageSize: 24, // how many cards per page
+  currentPage: 1, // 1‑based page index
 };
 
 export function initState(data) {
@@ -47,6 +49,10 @@ function applyFilters(data) {
 export function updateView() {
   state.view = applyFilters(state.all);
   state.view = applySort(state.view);
+
+  const maxPage = Math.max(1, Math.ceil(state.view.length / state.pageSize));
+  state.currentPage = Math.min(state.currentPage, maxPage);
+
   return state.view;
 }
 
@@ -85,16 +91,18 @@ function quickSortByObjectAttribute(arr, attribute) {
 
 export function getNextID() {
   if (state.all.length === 0) return 1;
-
-  for (var i = 1; i < state.all.length; i++) {
-    if (state.all[i].id - state.all[i - 1].id != 1) {
-      return state.all[i].id - 1;
-    }
-  }
-
-  return state.all.length + 1;
+  const nextID = Math.max(...state.all.map((p) => p.id)) + 1;
+  return nextID;
 }
 
 export function reverseView() {
   return state.view.reverse();
+}
+
+export function deletePokemon(pokemon) {
+  const toDelete = state.all.indexOf(pokemon);
+  if (toDelete > -1) {
+    state.all.splice(toDelete, 1);
+    return true;
+  } else return false;
 }

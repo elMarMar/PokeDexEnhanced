@@ -198,6 +198,7 @@
         <!-- Slides will be injected here -->
       </div>
       <div id="pokemon-grid"></div>
+      <div id="pager" class="pager"></div>
       <template id="pokemon-card-template">
         <div class="card-container">
           <div class="card">
@@ -259,10 +260,31 @@
           </div>
         </div>
       </template>
+      <template id="modal-confirm-delete-pokemon">
+        <div class="modal-card">
+          <div class="delete-pokemon-content">
+            <div id="delete-warning-symbol">
+              <img src="./assets/warning-symbol.png" alt="warning-symbol" />
+            </div>
+            <h2>Are you sure?</h2>
+            <div class="delete-pokemon-msg">
+              <span
+                >Do you really want to delete <b id="delete-name"> </b>. These
+                changes cannot be undone.</span
+              >
+            </div>
+            <button id="back-btn">Cancel</button>
+            <button id="confirm-delete-btn">Delete</button>
+          </div>
+        </div>
+      </template>
       <template id="pokemon-favorites-modal">
         <div class="modal-favorites-card">
-          <h2>Favorites</h2>
+          <h2><span class="modal-favorite-star">★ </span> Favorites</h2>
           <div class="modal-favorites-content"></div>
+          <div class="modal-favorites-footer">
+            <button id="modal-favorites-refresh-btn">Refresh ⟳</button>
+          </div>
         </div>
       </template>
       <template id="pokemon-input-form-template">

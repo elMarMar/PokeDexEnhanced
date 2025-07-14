@@ -1,6 +1,6 @@
 import { formatId, refreshView } from "../util.js";
 import { showModal, closeModal } from "../modal.js";
-import { state, updateFavorites } from "../state.js";
+import { state, updateFavorites, deletePokemon } from "../state.js";
 import { launchPokemonInputForm } from "./forms.js";
 
 export function initCardUI() {
@@ -20,6 +20,8 @@ function fillCardGrid(grid, data) {
 }
 
 export function buildCard(pokemon) {
+  if (!pokemon) return;
+
   const template = document.getElementById("pokemon-detailed-modal-template");
   const card = template.content.cloneNode(true);
 
@@ -63,6 +65,7 @@ export function buildCard(pokemon) {
   });
 
   modalEditBtn.addEventListener("click", () => {
+    closeModal(modalContainer);
     launchPokemonInputForm(pokemon);
   });
 
@@ -71,8 +74,31 @@ export function buildCard(pokemon) {
   );
 
   modalDeletePokemonBtn.addEventListener("click", () => {
-    handlePokemonDelete(state.all, pokemon);
-    closeModal(modalContainer);
-    refreshView();
+    handleDeletePokemon(modalContainer, pokemon);
+  });
+}
+
+function handleDeletePokemon(modalParent, pokemon) {
+  const template = document.getElementById("modal-confirm-delete-pokemon");
+  const card = template.content.cloneNode(true);
+
+  const confirmDeleteBtn = card.querySelector("#confirm-delete-btn");
+  const backBtn = card.querySelector("#back-btn");
+  const name = card.querySelector("#delete-name");
+
+  name.textContent = pokemon.name;
+
+  const modalWrapper = showModal(card, true);
+  backBtn.addEventListener("click", () => {
+    closeModal(modalWrapper);
+  });
+
+  confirmDeleteBtn.addEventListener("click", () => {
+    if (modalParent) closeModal(modalParent);
+    closeModal(modalWrapper);
+    if (pokemon) {
+      deletePokemon(pokemon);
+      refreshView();
+    }
   });
 }

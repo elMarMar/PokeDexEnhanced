@@ -54,8 +54,6 @@ const pokemonTypes = [
 ];
 
 export function launchPokemonAddForm() {
-  closeModal();
-
   const template = document.getElementById("pokemon-input-form-template");
   const cardFragment = template.content.cloneNode(true);
 
@@ -114,8 +112,6 @@ export function launchPokemonAddForm() {
 }
 
 export function launchPokemonInputForm(pokemon) {
-  closeModal();
-
   const template = document.getElementById("pokemon-input-form-template");
   const cardFragment = template.content.cloneNode(true);
 
@@ -153,7 +149,6 @@ export function launchPokemonInputForm(pokemon) {
 
   return modalWrapper;
 }
-
 
 function fillEditFields(card, editableField, pokemon) {
   const key = editableField.key;

@@ -1,0 +1,474 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.blurred-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* translucent black */
+  backdrop-filter: blur(4px); /* background blur */
+  z-index: 1000;
+}
+
+.filter-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20vw;
+  height: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+}
+
+.filter-menu.active {
+  transform: translateX(0);
+}
+
+.filter-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-by-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.sort-by-btns button {
+  padding: 0.5rem;
+}
+
+.sort-by-btns #sort-by-reverse-list {
+  grid-column: span 2;
+}
+
+.filter-by-types-cbs {
+  overflow-y: scroll;
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.type-filter {
+  margin: 0.25rem;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-card {
+  background-color: white;
+}
+
+nav {
+  z-index: 1000;
+
+  position: fixed;
+  padding: 2rem;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-right {
+  flex-grow: 1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+nav button {
+  border: none;
+  background: none;
+  height: 100%;
+
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav button:hover {
+  color: red;
+  transition: 0.3s;
+}
+
+nav h1 {
+  /*TODO: DECORATE THIS*/
+}
+
+nav .search-field {
+  flex-grow: 1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  width: 100%;
+  max-width: 500px;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+
+#search-btn {
+  position: absolute;
+  transform: translateX(-0.5rem);
+}
+
+main {
+  padding: 5rem;
+}
+
+#hero-slideshow-container {
+  margin: 2rem 0;
+  width: 100%;
+  border: solid black 2px;
+}
+
+.hero-title h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.hero-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5rem;
+  gap: 1rem;
+}
+
+.hero-details > * {
+  max-width: 300px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.hero-pokemon-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
+
+  padding: 2rem;
+}
+
+.hero-pokemon-card:hover {
+  cursor: pointer;
+}
+
+.hero-title {
+  order: 0;
+}
+
+.hero-title .hero-name {
+  display: inline;
+}
+
+.hero-hire-img {
+  width: 400px;
+  height: 400px;
+  order: 2;
+}
+
+.hero-details {
+  order: 1;
+  grid-row: span 2;
+}
+
+#pokemon-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.card-container {
+}
+
+.card {
+  background: white;
+  border: solid black 2px;
+  padding: 1rem;
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.card-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.pokemon-id {
+  font-size: 1rem;
+}
+
+.pokemon-pixel-sprite {
+  image-rendering: pixelated;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.modal-card {
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.modal-card-header {
+  display: flex;
+}
+
+.modal-card-header .modal-exit-btn {
+  margin-left: auto;
+}
+
+.modal-card-header button {
+  height: 100%;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+}
+
+.modal-card-header button:hover {
+  color: red;
+}
+
+.modal-favorite-btn span {
+  text-shadow: 1px 1px black;
+  font-weight: 900;
+  color: gray;
+}
+
+.modal-card-body {
+  display: flex;
+}
+
+.modal-card-left {
+  position: relative;
+}
+
+.modal-name {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+.modal-id {
+  font-size: 2rem;
+}
+
+.modal-species {
+  display: block;
+}
+
+.modal-hire-img {
+  width: 400px;
+  height: 400px;
+}
+
+.modal-types {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
+
+.modal-types span {
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  border: solid black 2px;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.modal-card-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 400px;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.modal-card-right h2 {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.modal-description {
+  grid-column: span 2;
+  text-align: center;
+}
+
+.modal-card-right > span {
+  border: solid 2px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/*edit forms*/
+.drop-zone {
+  border: 2px dashed gray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(214, 214, 214);
+
+  min-height: 12rem;
+  max-width: 20rem;
+}
+
+.drop-zone .dragover {
+  border-color: #3d9bff;
+  background-color: #eef6ff;
+}
+
+.modal-img-preview {
+  margin-top: 0.5rem;
+  width: auto;
+  height: 100px;
+  border-radius: 5px;
+  image-rendering: pixelated;
+}
+
+.drop-zone label {
+  display: block;
+}
+
+.modal-input-form-left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.modal-name-field,
+.modal-id-field,
+.modal-species-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-input-form-right {
+  flex-grow: 1;
+  padding: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.modal-input-form-right > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-input-form-right h2 {
+  grid-column: span 2;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.modal-input-form-right .modal-description-field {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-description-field textarea {
+  width: 100%;
+  flex-grow: 1;
+  resize: none;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-save-input-btn {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.modal-save-input-btn:hover {
+  color: red;
+  cursor: grab;
+}
+
+/* Favorites Styling */
+.modal-favorites-card {
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 30rem;
+  height: 30rem;
+  background-color: white;
+
+  overflow: hidden;
+}
+
+.modal-favorites-card h2 {
+  margin-bottom: 0.5rem;
+}
+
+.modal-favorites-content {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

@@ -13,7 +13,7 @@ import { initAddPokemonUI } from "./ui/forms.js";
 import { closeModal } from "./modal.js";
 
 async function main() {
-  const data = await initData("../data/pokedex.json");
+  const data = await initData("../rawData/pokedex.json");
   initState(initialPokemonData.arr);
   initUI();
 }

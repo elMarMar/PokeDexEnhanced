@@ -100,23 +100,36 @@ export const initialPokemonData = {
   arr: [],
 };
 
-export async function initData(url) {
-  const data = await getData(url);
+export async function initData(paths) {
+  let data = null;
+
+  try {
+    data = await tryLoadData(paths);
+  } catch (error) {
+    throw error;
+  }
   storePokemonData(data);
   return initialPokemonData.arr;
 }
 
-async function getData(url) {
-  let data;
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Response Status:" + response.status);
-    }
+async function tryLoadData(paths) {
+  for (let i = 0; i < paths.length; i++) {
+    const path = paths[i];
 
-    data = await response.json();
-  } catch (error) {}
-  return data;
+    try {
+      const response = await fetch(path);
+      if (!response.ok)
+        throw new Error(`Response Status: ${response.status} at ${path}`);
+
+      const data = await response.json();
+      console.log(`Loaded Pokedex from: ${path}`);
+      return data;
+    } catch (error) {
+      console.warn(`Failed to load from ${path}:`, error.message);
+    }
+  }
+
+  throw new Error("All pokedex.json paths failed.");
 }
 
 function storePokemonData(data) {

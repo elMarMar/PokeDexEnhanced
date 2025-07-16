@@ -14,11 +14,11 @@ import { closeModal } from "./modal.js";
 
 async function main() {
   try {
-    const data = await initData("data/pokedex.json");
+    await initData(["data/pokedex.json"]);
   } catch (error) {
-    const data = await initData("../data/pokedex.json");
+    console.error(`Failed to load data from all sources`, error);
+    return;
   }
-
   initState(initialPokemonData.arr);
   initUI();
 }
@@ -36,15 +36,6 @@ function initUI() {
   refreshView();
 
   startHeroSlideshow(state.all);
-}
-
-function initUtilUI() {
-  document.addEventListener("click", (e) => {
-    if (e.target.matches(".modal-exit-btn")) {
-      const wrapper = e.target.closest(".modal-wrapper");
-      if (wrapper) closeModal(wrapper);
-    }
-  });
 }
 
 main();

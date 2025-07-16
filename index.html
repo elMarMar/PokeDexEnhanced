@@ -47,150 +47,16 @@
       <fieldset class="filter-by-types-cbs">
         <legend><h3>Filter Types:</h3></legend>
         <button id="toggle-all-filters">Toggle All</button>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="normal"
-            checked
-          /><label for="normal">Normal</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="fighting"
-            checked
-          /><label for="fighting">Fighting</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="flying"
-            checked
-          /><label for="flying">Flying</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="poison"
-            checked
-          /><label for="poison">Poison</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="ground"
-            checked
-          /><label for="ground">Ground</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="rock"
-            checked
-          /><label for="rock">Rock</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="bug"
-            checked
-          /><label for="bug">Bug</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="ghost"
-            checked
-          /><label for="ghost">Ghost</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="steel"
-            checked
-          /><label for="steel">Steel</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="fire"
-            checked
-          /><label for="fire">Fire</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="water"
-            checked
-          /><label for="water">Water</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="grass"
-            checked
-          /><label for="grass">Grass</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="electric"
-            checked
-          /><label for="electric">Electric</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="psychic"
-            checked
-          /><label for="psychic">Psychic</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="ice"
-            checked
-          /><label for="ice">Ice</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="dragon"
-            checked
-          /><label for="dragon">Dragon</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="dark"
-            checked
-          /><label for="dark">Dark</label>
-        </ul>
-        <ul>
-          <input
-            class="type-filter"
-            type="checkbox"
-            value="fairy"
-            checked
-          /><label for="fairy">Fairy</label>
-        </ul>
+        <template id="filter-by-cb-template">
+          <ul class="type-checkbox-field">
+            <input
+              class="type-checkbox"
+              type="checkbox"
+              value=""
+              checked
+            /><label for=""></label>
+          </ul>
+        </template>
       </fieldset>
     </aside>
     <main>
@@ -225,13 +91,13 @@
         <div class="modal-card">
           <div class="modal-card-header">
             <div>
-              <button class="modal-favorite-btn">
+              <button class="js-favorite-btn">
                 <span class="modal-favorite-star">★ </span>Favorite
               </button>
-              <button class="modal-edit-btn">Edit</button>
-              <button class="modal-delete-pokemon-btn">DELETE Pokemon</button>
+              <button class="js-edit-btn">Edit</button>
+              <button class="js-delete-pokemon-btn">DELETE Pokemon</button>
             </div>
-            <button class="modal-exit-btn">Close ✕</button>
+            <button class="js-exit-btn">Close ✕</button>
           </div>
           <div class="modal-card-body">
             <div class="modal-card-left">
@@ -263,201 +129,52 @@
       <template id="modal-confirm-delete-pokemon">
         <div class="modal-card">
           <div class="delete-pokemon-content">
-            <div id="delete-warning-symbol">
+            <div class="js-delete-warning-symbol">
               <img src="./assets/warning-symbol.png" alt="warning-symbol" />
             </div>
             <h2>Are you sure?</h2>
             <div class="delete-pokemon-msg">
               <span
-                >Do you really want to delete <b id="delete-name"> </b>. These
-                changes cannot be undone.</span
+                >Do you really want to delete <b class="js-delete-name"> </b>.
+                These changes cannot be undone.</span
               >
             </div>
-            <button id="back-btn">Cancel</button>
-            <button id="confirm-delete-btn">Delete</button>
+            <button class="js-back-btn">Cancel</button>
+            <button class="js-confirm-delete-btn">Delete</button>
           </div>
         </div>
       </template>
-      <template id="pokemon-favorites-modal">
+      <template id="pokemon-favorites-modal-template">
         <div class="modal-favorites-card">
           <h2><span class="modal-favorite-star">★ </span> Favorites</h2>
-          <div class="modal-favorites-content"></div>
+          <div class="modal-favorites-container"></div>
           <div class="modal-favorites-footer">
-            <button id="modal-favorites-refresh-btn">Refresh ⟳</button>
+            <button class="js-favorites-refresh-btn">Refresh ⟳</button>
           </div>
+        </div>
+      </template>
+
+      <template id="input-field-template">
+        <div class="">
+          <label for=""> </label>
+          <input type="" class="" name="" />
         </div>
       </template>
       <template id="pokemon-input-form-template">
         <div class="modal-card">
           <div class="modal-card-header">
-            <button class="modal-exit-btn">Close ✕</button>
+            <button class="js-exit-btn">Close ✕</button>
           </div>
           <div class="modal-card-body">
-            <div class="modal-input-form-left">
-              <div class="modal-name-field">
-                <label for="modal-name-input">Name: </label
-                ><input
-                  type="text"
-                  id="modal-name-input"
-                  class="modal-name-input"
-                />
-              </div>
-              <div class="modal-id-field">
-                <label for="modal-id-input">Id: </label
-                ><input
-                  type="number"
-                  id="modal-id-input"
-                  class="modal-id-input"
-                />
-              </div>
-              <div class="modal-species-field">
-                <label for="modal-species-input">Species: </label
-                ><input
-                  type="text"
-                  id="modal-species-input"
-                  class="modal-species-input"
-                />
-              </div>
-              <div class="modal-type1-field">
-                <label for="modal-type1-input">Type1: </label
-                ><select id="modal-type1-input" class="modal-type1-input">
-                  <option value="">Select Type</option>
-                  <option value="N/A">N/A</option>
-                  <option value="Normal">Normal</option>
-                  <option value="Fire">Fire</option>
-                  <option value="Water">Water</option>
-                  <option value="Grass">Grass</option>
-                  <option value="Electric">Electric</option>
-                  <option value="Ice">Ice</option>
-                  <option value="Fighting">Fighting</option>
-                  <option value="Poison">Poison</option>
-                  <option value="Ground">Ground</option>
-                  <option value="Flying">Flying</option>
-                  <option value="Psychic">Psychic</option>
-                  <option value="Bug">Bug</option>
-                  <option value="Rock">Rock</option>
-                  <option value="Ghost">Ghost</option>
-                  <option value="Dark">Dark</option>
-                  <option value="Dragon">Dragon</option>
-                  <option value="Steel">Steel</option>
-                  <option value="Fairy">Fairy</option>
-                </select>
-              </div>
-              <div class="modal-type2-field">
-                <label for="modal-type2-input">Type2: </label
-                ><select id="modal-type2-input" class="modal-type2-input">
-                  <option value="">Select Type</option>
-                  <option value="N/A">N/A</option>
-                  <option value="Normal">Normal</option>
-                  <option value="Fire">Fire</option>
-                  <option value="Water">Water</option>
-                  <option value="Grass">Grass</option>
-                  <option value="Electric">Electric</option>
-                  <option value="Ice">Ice</option>
-                  <option value="Fighting">Fighting</option>
-                  <option value="Poison">Poison</option>
-                  <option value="Ground">Ground</option>
-                  <option value="Flying">Flying</option>
-                  <option value="Psychic">Psychic</option>
-                  <option value="Bug">Bug</option>
-                  <option value="Rock">Rock</option>
-                  <option value="Ghost">Ghost</option>
-                  <option value="Dark">Dark</option>
-                  <option value="Dragon">Dragon</option>
-                  <option value="Steel">Steel</option>
-                  <option value="Fairy">Fairy</option>
-                </select>
-              </div>
-              <div class="modal-hire-img-field drop-zone">
-                <label for="modal-hire-img-input">Hire: </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="modal-hire-img-input"
-                  class="modal-hire-img-input"
-                />
-                <img
-                  class="modal-hire-img-preview modal-img-preview"
-                  alt="Image Preview"
-                />
-              </div>
-              <div class="modal-pixel-sprite-field drop-zone">
-                <label for="modal-pixel-sprite-input">Sprite: </label
-                ><input
-                  type="file"
-                  accept="image/*"
-                  id="modal-pixel-sprite-input"
-                  class="modal-pixel-sprite-input"
-                />
-                <img
-                  class="modal-pixel-sprite-preview modal-img-preview"
-                  alt="Image Preview"
-                  src=""
-                />
-              </div>
-            </div>
+            <div class="modal-input-form-left"></div>
             <div class="modal-input-form-right">
               <h2>INFORMATION</h2>
-              <div class="modal-description-field">
-                <label for="modal-description-input">Description: </label
-                ><textarea
-                  id="modal-description-input"
-                  class="modal-description-input"
-                ></textarea>
-              </div>
-
-              <div class="modal-height-field">
-                <label for="modal-height-input">Height: </label
-                ><input
-                  type="number"
-                  id="modal-height-input"
-                  class="modal-height-input"
-                />
-              </div>
-              <div class="modal-weight-field">
-                <label for="modal-weight-input">Weight: </label
-                ><input
-                  type="number"
-                  id="modal-weight-input"
-                  class="modal-weight-input"
-                />
-              </div>
-              <div class="modal-hp-field">
-                <label for="modal-hp-input">Hp: </label
-                ><input
-                  type="number"
-                  id="modal-hp-input"
-                  class="modal-hp-input"
-                />
-              </div>
-              <div class="modal-attack-field">
-                <label for="modal-attack-input">Attack: </label
-                ><input
-                  type="number"
-                  id="modal-attack-input"
-                  class="modal-attack-input"
-                />
-              </div>
-              <div class="modal-defense-field">
-                <label for="modal-defense-input">Defense: </label
-                ><input
-                  type="number"
-                  id="modal-defense-input"
-                  class="modal-defense-input"
-                />
-              </div>
-              <div class="modal-speed-field">
-                <label for="modal-speed-input">Speed: </label
-                ><input
-                  type="number"
-                  id="modal-speed-input"
-                  class="modal-speed-input"
-                />
-              </div>
             </div>
           </div>
           <div class="modal-card-footer">
-            <button class="modal-save-input-btn">Save Input</button>
+            <button class="js-save-input-btn modal-save-input-btn">
+              Save Input
+            </button>
           </div>
         </div>
       </template>
@@ -481,5 +198,5 @@
     </main>
   </body>
 
-  <script type="module" src="./js/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </html>

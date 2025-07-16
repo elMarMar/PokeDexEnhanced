@@ -16,6 +16,7 @@ export class Pokemon {
     attack,
     defense,
     speed,
+    // custom user input
     favorite,
     pixelSpriteOverride,
     hireImgOverride
@@ -23,8 +24,8 @@ export class Pokemon {
     this.name = name;
     this.id = getNumberOutOfString(id);
     this.species = species;
-    this.type1 = type1;
-    this.type2 = type2;
+    this.type1 = String(type1).toLowerCase();
+    this.type2 = type2 ? String(type2).toLowerCase() : null;
 
     // existing
     this.pixelSprite = pixelSprite;
@@ -41,6 +42,7 @@ export class Pokemon {
     this.attack = getNumberOutOfString(attack);
     this.defense = getNumberOutOfString(defense);
     this.speed = getNumberOutOfString(speed);
+
     this.favorite = favorite ?? false;
   }
 
@@ -71,6 +73,27 @@ export class Pokemon {
       this.speed
     );
   }
+
+  static types = [
+    "normal",
+    "fire",
+    "water",
+    "grass",
+    "electric",
+    "ice",
+    "fighting",
+    "poison",
+    "ground",
+    "flying",
+    "psychic",
+    "bug",
+    "rock",
+    "ghost",
+    "dark",
+    "dragon",
+    "steel",
+    "fairy",
+  ];
 }
 
 export const initialPokemonData = {

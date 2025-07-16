@@ -67,7 +67,10 @@ button:hover {
   padding: 1rem;
 }
 
-.type-filter {
+.type-checkbox-field {
+  text-transform: capitalize;
+}
+.type-checkbox {
   margin: 0.25rem;
 }
 
@@ -248,6 +251,8 @@ main {
   padding: 1rem;
 
   transition: 0.3s;
+  width: 100%;
+  height: 100%;
 }
 
 .card:hover {
@@ -269,6 +274,11 @@ main {
   font-size: 1rem;
 }
 
+.pokemon-type1,
+.pokemon-type2 {
+  text-transform: capitalize;
+}
+
 .pokemon-pixel-sprite {
   image-rendering: pixelated;
   width: 100px;
@@ -278,15 +288,11 @@ main {
 
 .modal-card {
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 0.5rem;
 }
 
 .modal-card-header {
   display: flex;
-}
-
-.modal-card-header .modal-exit-btn {
-  margin-left: auto;
 }
 
 .modal-card-header button {
@@ -294,13 +300,19 @@ main {
   padding: 0.25rem;
   border: none;
   background: none;
+  transition: 0.3s;
 }
 
 .modal-card-header button:hover {
   color: red;
+  transition: 0.3s;
 }
 
-.modal-favorite-btn span {
+.modal-card-header .js-exit-btn {
+  margin-left: auto;
+}
+
+.js-favorite-btn span {
   text-shadow: 1px 1px black;
   font-weight: 900;
   color: gray;
@@ -330,17 +342,19 @@ main {
 .modal-hire-img {
   width: 400px;
   height: 400px;
+  object-fit: cover;
 }
 
 .modal-types {
   position: absolute;
   right: 0;
-  bottom: 20px;
+  bottom: 1.25rem;
+  text-transform: capitalize;
 }
 
 .modal-types span {
   display: inline-block;
-  min-width: 100px;
+  min-width: 6.25rem;
   text-align: center;
   border: solid black 2px;
   padding: 0.5rem;
@@ -376,6 +390,11 @@ main {
 }
 
 /*edit forms*/
+.modal-input-form-left input,
+.modal-input-form-right input {
+  padding: 0.25rem;
+}
+
 .drop-zone {
   border: 2px dashed gray;
   border-radius: 0.5rem;
@@ -418,6 +437,11 @@ main {
 .modal-species-field {
   display: flex;
   justify-content: space-between;
+}
+
+.modal-type1-field select,
+.modal-type2-field select {
+  text-transform: capitalize;
 }
 
 .modal-input-form-right {
@@ -464,6 +488,7 @@ main {
 
 .modal-save-input-btn:hover {
   color: red;
+  transition: 0.3s;
 }
 
 /* Favorites Styling */
@@ -471,7 +496,7 @@ main {
   border-radius: 1.5rem;
   padding: 2rem;
   width: 30rem;
-  height: 30rem;
+  height: 35rem;
   background-color: white;
 
   overflow: hidden;
@@ -482,7 +507,7 @@ main {
   font-family: "arial";
 }
 
-.modal-favorites-content {
+.modal-favorites-container {
   width: 100%;
   height: 85%;
 
@@ -495,18 +520,18 @@ main {
   overflow-x: hidden;
 }
 
-#modal-favorites-refresh-btn {
+.js-favorites-refresh-btn {
   font-size: 1.25rem;
   float: right;
-  margin: 0.25rem;
   border: none;
   background: none;
 }
 
-#modal-favorites-refresh-btn:hover {
+.js-favorites-refresh-btn:hover {
   color: red;
   transition: 0.3s;
 }
+
 /* delete pokemon*/
 .delete-pokemon-content {
   width: 15rem;
@@ -516,15 +541,17 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr 2fr 1fr;
   gap: 0.5rem;
+
+  font-family: "arial";
 }
 
-#delete-warning-symbol {
+.js-delete-warning-symbol {
   width: 100%;
   height: auto;
   grid-column: span 2;
 }
 
-#delete-warning-symbol img {
+.js-delete-warning-symbol img {
   width: 100px;
   height: 100px;
 }
@@ -554,18 +581,16 @@ main {
   color: white;
 }
 
-#confirm-delete-btn {
+/*FIX THIS*/
+.delete-pokemon-content .js-confirm-delete-btn {
   background-color: rgb(244, 90, 90);
   font-weight: bold;
 }
 
-#confirm-delete-btn:hover {
+.js-confirm-delete-btn:hover {
   background-color: rgb(255, 0, 0);
-  font-weight: bold;
 }
 .delete-pokemon-msg {
   grid-column: span 2;
   font-size: 1.25rem;
-}
-#delete-name {
 }

@@ -7,7 +7,7 @@ import { startHeroSlideshow } from "./slideshow.js";
 // Import UI modules
 import { initCardUI } from "./ui/card.js";
 import { initFiltersUI } from "./ui/filters.js";
-import { initSortUI } from "./ui/sort.js";
+import { initSortUI } from "./ui/sortUI.js";
 import { initFavoritesUI } from "./ui/favorites.js";
 import { initAddPokemonUI } from "./ui/forms.js";
 import { closeModal } from "./modal.js";
@@ -31,8 +31,6 @@ function initUI() {
   refreshView();
 
   startHeroSlideshow(state.all);
-
-  initUtilUI();
 }
 
 function initUtilUI() {

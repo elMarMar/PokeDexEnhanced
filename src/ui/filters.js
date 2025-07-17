@@ -1,12 +1,17 @@
 import { state, updateFilters } from "../state.js";
 import { Pokemon } from "../data.js";
-import { refreshView, refreshReverseView, cloneTemplate } from "../util.js";
+import {
+  refreshView,
+  refreshReverseView,
+  cloneTemplate,
+  debounce,
+} from "../util.js";
 
 export function initFiltersUI() {
   const toggleFilterBtn = document.getElementById("toggle-filters-btn");
   const filterMenu = document.getElementById("filter-menu");
   const filterOverlay = document.getElementById("filter-overlay");
-  const toggleAllBtn = document.getElementById("toggle-all-filters");
+  const toggleAllBtn = document.getElementById("toggle-all-filters-btn");
 
   const filterContainer = document.querySelector(
     "fieldset.filter-by-types-cbs"
@@ -95,8 +100,25 @@ function buildCheckboxFields(values, filterContainer, templateID) {
 function initSearchUI() {
   const searchBar = document.getElementById("search-bar");
   const searchBtn = document.getElementById("search-btn");
+
+  searchBar.addEventListener("input", (e) => {
+    updateSearchDebounce(e.target.value);
+  });
+
+  searchBar.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      state.filters.search = searchBar.value;
+      refreshView();
+    }
+  });
+
   searchBtn.addEventListener("click", () => {
     state.filters.search = searchBar.value;
     refreshView();
   });
 }
+
+const updateSearchDebounce = debounce((text) => {
+  state.filters.search = text;
+  refreshView();
+}, 1000);

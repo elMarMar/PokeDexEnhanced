@@ -8,7 +8,7 @@ A sleek, interactive Pokemon built using **vanilla JavaScript, HTML, and CSS**. 
 
 ## 🔍 Features
 
-- **Live Search** by name or species
+- **Live Search** by name or species (implemented with debounce)
 - **Filter** by Pokemon type (dual-type supported)
 - **Sort** by ID, Name, or other attributes
 - **In-browser Editing** of Pokemon data (name, species, image, etc.)

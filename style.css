@@ -61,6 +61,11 @@ button:hover {
   grid-column: span 2;
 }
 
+#toggle-all-filters-btn {
+  padding: 0.25rem;
+  margin: 0.25rem 0;
+}
+
 .filter-by-types-cbs {
   overflow-y: scroll;
   flex-grow: 1;
@@ -409,11 +414,6 @@ main {
 
   min-height: 12rem;
   max-width: 20rem;
-}
-
-.drop-zone .dragover {
-  border-color: #3d9bff;
-  background-color: #eef6ff;
 }
 
 .modal-img-preview {

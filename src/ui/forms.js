@@ -108,6 +108,8 @@ export function launchPokemonAddForm() {
   // ID autofill:
   const idInput = card.querySelector(".js-id-input");
   idInput.value = getNextID();
+  idInput.title =
+    "WARNING: MODIFYING DEFAULT ID VALUE MAY BREAK DATA ORGANIZATION";
 
   // Image Preview Set Up
   editableFields.forEach((ef) => {
@@ -208,6 +210,10 @@ function buildFields(parentContainer) {
       textarea.classList.add(`modal-${ef.key}-input`);
       textarea.classList.add(`${ef.class}-input`);
     } else {
+      if (ef.key === "id")
+        input.title =
+          "WARNING: MODIFYING DEFAULT ID VALUE MAY BREAK DATA ORGANIZATION";
+
       input.type = ef.type;
       input.name = ef.key;
     }

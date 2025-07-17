@@ -218,6 +218,10 @@ main {
   grid-row: span 2;
 }
 
+.hero-types {
+  text-transform: capitalize;
+}
+
 #pokemon-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

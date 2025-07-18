@@ -632,6 +632,19 @@ main {
   }
 }
 
+@media (max-height: 700px) {
+  .drop-zone {
+    min-height: 0;
+    height: 8rem;
+    overflow-y: scroll;
+  }
+
+  .drop-zone .modal-img-preview {
+    width: 80px;
+    height: 80px;
+  }
+}
+
 @media (max-width: 950px) {
   .modal-hire-img {
     width: 300px;

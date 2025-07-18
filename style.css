@@ -73,6 +73,8 @@ button:hover {
 }
 
 .type-checkbox-field {
+  display: flex;
+  align-items: center;
   text-transform: capitalize;
 }
 .type-checkbox {
@@ -212,10 +214,13 @@ main {
   display: inline;
 }
 
+.hero-hire-img-container {
+  order: 2;
+}
+
 .hero-hire-img {
   width: 400px;
   height: 400px;
-  order: 2;
 }
 
 .hero-details {
@@ -597,4 +602,199 @@ main {
 .delete-pokemon-msg {
   grid-column: span 2;
   font-size: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .filter-menu {
+    width: 60%;
+    font-size: 1.5rem;
+  }
+
+  .filter-menu button {
+    font-size: 1.25rem;
+  }
+
+  .filter-menu > fieldset {
+    padding: 0.25rem;
+  }
+
+  .filter-menu button {
+    padding: 0.25rem;
+  }
+
+  #pokemon-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-hire-img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 950px) {
+  .modal-hire-img {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 860px) {
+  #pokemon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-card {
+    width: 90%;
+    max-height: 90%;
+    overflow-y: scroll;
+  }
+
+  .modal-card-body {
+    flex-direction: column;
+  }
+
+  .modal-card-body .modal-card-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-card-right {
+    max-width: 100%;
+  }
+
+  .modal-card-body .modal-types {
+    position: relative;
+    align-self: flex-end;
+  }
+
+  .modal-input-form-left {
+    width: 100%;
+  }
+
+  .modal-input-form-left .drop-zone {
+    position: relative;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  main {
+    padding: 1rem;
+  }
+
+  .nav-left {
+    justify-content: center;
+    margin-right: 1rem;
+  }
+
+  .nav-left h1 {
+    display: none;
+  }
+
+  .nav-right {
+    gap: 1rem;
+  }
+
+  .nav-right #search-bar {
+    min-width: 0;
+  }
+
+  #hero-slideshow-container {
+    margin-top: 7rem;
+    height: 115vh;
+  }
+
+  .hero-slide {
+    height: 100%;
+  }
+
+  .hero-pokemon-card {
+    height: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    text-align: center;
+  }
+
+  .hero-hire-img-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-hire-img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .pager-number-navigation {
+    display: none;
+  }
+}
+
+/* mobile screens */
+@media (max-width: 600px) and (min-height: 650px) {
+  nav button {
+    font-size: 1rem;
+  }
+
+  .filter-menu {
+    font-size: 2rem;
+    overflow-y: scroll;
+  }
+
+  .filter-menu .sort-by-btns {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    overflow-y: scroll;
+  }
+
+  .filter-menu button {
+    font-size: 2rem;
+  }
+
+  .filter-menu #sort-by-reverse-list {
+    grid-column: span 1;
+  }
+
+  .type-checkbox-field {
+    padding: 1rem;
+  }
+
+  .filter-menu .filter-by-types-cbs input[type="checkbox"] {
+    zoom: 2;
+  }
+
+  .search-field #search-btn {
+    display: none;
+  }
+
+  .hero-title h2 {
+    font-size: 2rem;
+  }
+
+  .hero-hire-img {
+    width: 225px;
+    height: 225px;
+  }
+
+  .modal-card-header button {
+    font-size: 0.68rem;
+  }
+
+  .modal-input-form-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-input-form-right h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-input-form-right input,
+  .modal-input-form-left input {
+    max-width: 150px;
+  }
 }

@@ -48,6 +48,11 @@ function renderPager() {
 function makeBtn(txt, page) {
   const btn = document.createElement("button");
   btn.textContent = txt;
+
+  if (btn.textContent !== "« Prev" && btn.textContent !== "Next »") {
+    btn.classList.add("pager-number-navigation");
+  }
+
   btn.disabled = page === state.currentPage;
   btn.addEventListener("click", () => {
     state.currentPage = page;
